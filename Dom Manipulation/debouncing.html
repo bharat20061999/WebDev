@@ -1,0 +1,49 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <div style="padding: 10px;" id="firstNum">
+        <input onInput="debouncingDiv()" type ="text" placeholder="First Number"></input>
+        </div>
+        <div style="padding: 10px;" id="secondNum">
+        <input onInput="debouncingDiv()" type ="text" placeholder="Second Number"></input>
+         </div>
+         <div style="padding: 10px;">
+        <!-- <!-- <button onclick="populateDiv2()">Calculate Sum</button> -->
+        <div style="padding: 8px;"id = "finalSum"> </div> 
+        </div>
+    </body>
+    <script>
+    function populateDiv() {
+        const a = document.getElementById('firstNum').getElementsByTagName('input')[0].value
+        const b = document.getElementById('secondNum').getElementsByTagName('input')[0].value
+
+    //  const element = document.getElementById('finalSum');
+    //  element.innerHTML = parseInt(a) + parseInt(b);
+
+    fetch("https://sum-server.100xdevs.com/sum?a="+a+"&b="+b).then(function(response) {
+        response.text().then(function(ans) {
+            console.log(ans)
+            document.getElementById('finalSum').innerHTML = ans;
+})
+    });
+}
+ async function populateDiv2() {
+        const a = document.getElementById('firstNum').getElementsByTagName('input')[0].value
+        const b = document.getElementById('secondNum').getElementsByTagName('input')[0].value
+
+   const response = await  fetch("https://sum-server.100xdevs.com/sum?a="+a+"&b="+b)
+    const ans = await response.text(); 
+    document.getElementById('finalSum').innerHTML = ans;
+}
+let timeOut;
+function debouncingDiv() {
+    // how to cancel the clock by clearTimeOut
+   clearTimeout(timeOut);
+   timeOut = setTimeout(function(){
+        populateDiv2();
+    },1000);
+
+}
+    </script>
+</html>
