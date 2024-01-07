@@ -6,19 +6,45 @@
 </head>
 <body>
     <script>
+           var id = 0;
+           function markasDone(id){
+            const parent = document.getElementById(id);
+            parent.children[2].innerHTML="Done!";
+           }
+        function createChild( title ,description ,id) {
+            const child = document.createElement("div");
+            const firstGrandParent = document.createElement("div")
+            firstGrandParent.innerHTML= title;
+            const secondGrandParent = document.createElement("div")
+            secondGrandParent.innerHTML= description;
+            const thirdGrandParent = document.createElement("button")
+            thirdGrandParent.innerHTML= "Mark as done";
+            thirdGrandParent.setAttribute("onclick",`markasDone(${id})`);
+            child.appendChild(firstGrandParent)
+            child.appendChild(secondGrandParent)
+            child.appendChild(thirdGrandParent)
+            child.setAttribute("id",id);
+            return child;
+
+
+        }
         function addTodo() {
             const title = document.getElementById('title').value;
             const description = document.getElementById('description').value;
-            console.log("🚀 ~ file: todoApplication.html:12 ~ description:", description)
-            
-            document.getElementById("container").innerHTML = "asdads"
+         
+            document.getElementById("todos").appendChild(createChild(title,description,id++));
 
         }
+    
     </script>
+    <div>
     <input id="title" type="text" placeholder="text">
+</div>
+<div>
     <input id="description"
      type="description" placeholder="discription">
+    </div>
     <button onClick="addTodo()"> Add todo</button>
-    <div id="container"></div>
+    <div id="todos"></div>
 </body>
 </html>
