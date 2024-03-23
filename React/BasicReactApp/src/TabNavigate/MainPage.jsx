@@ -1,10 +1,10 @@
-import  { useState } from 'react';
-import Tab from './TabNavigate/Tab';
-import Tab1Content from './TabNavigate/Tab1';
-import Tab2Content from './TabNavigate/Tab2';
-import Tab3Content from './TabNavigate/Tab3';
+import React, { useState } from 'react';
+import Tab from './Tab';
+import Tab1Content from './Tab1';
+import Tab2Content from './Tab2';
+import Tab3Content from './Tab3';
 
-const App = () => {
+const Tabs = () => {
   const [activeTab, setActiveTab] = useState('tab1');
 
   const handleTabClick = (tab) => {
@@ -30,4 +30,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Tabs;

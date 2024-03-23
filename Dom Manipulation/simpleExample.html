@@ -1,0 +1,22 @@
+<!-- Problem with this approach
+1. Too much code you have to write as the developer
+2. As your app scales (todo app for eg), this gets
+harder and harder. -->
+
+<!DOCTYPE html>
+<html>
+<script>
+  function onButtonPress() {
+    const currentValue = document.getElementById("btn").innerHTML;
+    console.log(currentValue.split(" "))
+    const currentCounter = currentValue.split(" ")[1];
+    const newCounter = parseInt(currentCounter) + 1;
+    document.getElementById("btn").innerHTML = "Counter " + newCounter;
+  }
+</script>
+
+<body>
+  <button onclick="onButtonPress()" id="btn">Counter 0</button>
+</body>
+
+</html>

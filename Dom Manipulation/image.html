@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .image-container img {
+            width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Gallery</h1>
+    <div class="image-container" id="image-container">
+    </div>
+
+    <script src="data.js"></script>
+
+    <script>
+        function displayImages() {
+            const container = document.getElementById('image-container');
+            images.forEach(imageUrl => {
+                console.log(imageUrl.url);
+                const imgElement = document.createElement('img');
+                imgElement.src = imageUrl.url;
+                container.appendChild(imgElement);
+            });
+        }
+        window.onload = displayImages;
+    </script>
+</body>
+</html>
